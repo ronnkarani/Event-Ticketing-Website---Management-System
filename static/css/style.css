@@ -1,0 +1,218 @@
+/* style.css — Dark, sleek Love & Laugh theme */
+:root{
+  --bg:#0b0c0f;
+  --panel:#0f1114;
+  --muted:#a3a6ab;
+  --accent:#ffde59;    /* warm yellow-ish accent like StandUp */
+  --accent-2:#ff8a5b;  /* secondary accent */
+  --text:#e9ecef;
+  --glass: rgba(255,255,255,0.03);
+  --radius:12px;
+  --max-width:1200px;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body.theme-dark{
+  background:linear-gradient(180deg,var(--bg) 0%, #050507 100%);
+  color:var(--text);
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* wrap */
+.wrap{max-width:var(--max-width);margin:0 auto;padding:48px 20px}
+
+/* Navbar */
+.site-header{position:sticky;top:0;z-index:60}
+.navbar{
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  width:100%;
+}
+.nav-inner{max-width:var(--max-width);margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:16px;position:relative}
+.brand{font-weight:800;color:var(--text);text-decoration:none;font-size:20px;letter-spacing:0.4px}
+.brand .amp{color:var(--accent);margin:0 6px}
+
+/* Nav links desktop */
+.nav-links{list-style:none;display:flex;gap:18px;margin-left:auto;align-items:center;padding:0}
+.nav-links a, .nav-links button.drop-toggle{
+  color:var(--text);text-decoration:none;font-weight:600;background:none;border:none;cursor:pointer;padding:8px 10px;border-radius:8px
+}
+.nav-links a:hover, .nav-links button.drop-toggle:hover{background:var(--glass)}
+
+/* Dropdown */
+.has-dropdown{position:relative}
+.dropdown{
+  position:absolute;
+  top:44px;right:0;
+  background:var(--panel);
+  border:1px solid rgba(255,255,255,0.03);
+  padding:8px;border-radius:10px;
+  display:none;min-width:180px;box-shadow:0 6px 18px rgba(0,0,0,0.6)
+}
+.dropdown li{list-style:none}
+.dropdown a{display:block;padding:8px 12px;color:var(--text);text-decoration:none}
+.dropdown a:hover{background:rgba(255,255,255,0.02)}
+
+/* cart button */
+.cart-btn{margin-left:12px;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;padding:6px;border-radius:8px}
+.cart-btn:hover{background:var(--glass)}
+
+/* Hamburger (mobile) */
+.hamburger{display:none;margin-left:10px;background:none;border:none;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer}
+.hamburger span{display:block;width:18px;height:2px;background:var(--text);margin:4px 0;border-radius:2px;transition:all .2s}
+
+/* Mobile menu container (hidden on desktop) */
+.mobile-menu-container{display:none}
+
+/* Hero */
+.hero{height:70vh;min-height:420px;position:relative;overflow:hidden;display:flex;align-items:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(6,6,7,0.45), rgba(6,6,7,0.6));z-index:1}
+.hero-inner{z-index:2;max-width:var(--max-width);margin:0 auto;padding:40px 20px;text-align:left}
+.hero-title{font-size:40px;margin:0 0 12px;color:var(--text);line-height:1.02}
+.hero-sub{color:var(--muted);margin-bottom:20px}
+.hero-ctas{display:flex;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#111}
+.btn-ghost{border:1px solid rgba(255,255,255,0.06);color:var(--text);background:transparent}
+
+/* Hero background images via pseudo element */
+.hero::before{
+  content:"";
+  position:absolute;inset:0;background-size:cover;background-position:center center;transition:background-image 0.8s ease-in-out;z-index:0;
+  filter:brightness(0.65) contrast(1.05);
+}
+
+/* Featured grid */
+.featured{padding:40px 20px}
+.section-title{font-size:22px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+.card-media{height:160px;background-size:cover;background-position:center}
+.card-body{padding:14px}
+.card-link{text-decoration:none;color:var(--accent);font-weight:700}
+
+/* Events list */
+.page-head{text-align:center;margin-bottom:18px}
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.event-card{display:flex;background:var(--panel);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
+.event-thumb{width:40%;background-size:cover;background-position:center}
+.event-body{padding:12px;width:60%}
+.event-actions{margin-top:10px;display:flex;gap:8px}
+
+/* Event detail layout */
+.detail-grid{display:grid;grid-template-columns:1fr 420px;gap:28px}
+.event-hero{height:400px;background-size:cover;background-position:center;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+.event-title{font-size:28px;margin:0 0 6px}
+.meta p{margin:6px 0;color:var(--muted)}
+.actions{margin-top:18px;display:flex;gap:10px}
+
+/* Contact layout */
+.contact-grid{display:grid;grid-template-columns:1fr 360px;gap:28px}
+.contact-card{background:var(--panel);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+.contact-info{padding:22px;color:var(--muted)}
+
+/* Footer */
+.site-footer{margin-top:40px}
+.footer-top{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));padding:48px 0;border-top:1px solid rgba(255,255,255,0.02)}
+.footer-top .wrap{display:flex;gap:28px;align-items:flex-start}
+.footer-top .col{flex:1}
+.footer-top h5{margin-bottom:10px}
+.subscribe-form{display:flex;gap:8px}
+.subscribe-form input{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:var(--text)}
+.subscribe-form button{padding:10px 12px;border-radius:8px;background:var(--accent);border:none;color:#111;font-weight:700}
+
+.footer-bottom{background:#070708;padding:12px 0;border-top:1px solid rgba(255,255,255,0.02}
+.footer-bottom .wrap.small{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 20px;color:var(--muted)}
+
+/* Small helpers */
+.muted{color:var(--muted);font-size:14px}
+.btn-sm{padding:8px 10px;border-radius:8px}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text)}
+
+/* Responsive */
+@media (max-width: 980px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .events-grid{grid-template-columns:repeat(2,1fr)}
+  .detail-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .hero-title{font-size:32px}
+}
+
+/* Mobile: adapt navbar and show mobile menu container */
+@media (max-width: 720px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .cart-btn{order:3;margin-left:auto}
+  .mobile-menu-container{display:block;background:transparent}
+  .mobile-menu{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-top:1px solid rgba(255,255,255,0.03);padding:12px 20px}
+  .mobile-menu a{display:block;padding:12px 0;color:var(--text);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.01)}
+  .hero{height:56vh}
+  .hero-inner{text-align:center}
+  .hero-ctas{justify-content:center}
+  .grid{grid-template-columns:1fr}
+  .events-grid{grid-template-columns:1fr}
+}
+
+
+/* === FIXED MOBILE NAVIGATION === */
+.mobile-menu-container.active {
+  display: block;
+}
+
+.mobile-menu {
+  display: none;
+  background: var(--panel);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 14px 20px;
+}
+
+.mobile-menu.open {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.mobile-menu li {
+  list-style: none;
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 10px 0;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Hamburger animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(6px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-6px);
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* === FOOTER FIX === */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1 0 auto;
+}
+.site-footer {
+  flex-shrink: 0;
+}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home | Love & Laugh{% endblock %}
+{% block content %}
+
+<!-- HERO SECTION -->
+<main id="mainContent">
+  <section id="hero" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <h1 class="hero-title">Discover Events That Spark Joy</h1>
+      <p class="hero-sub">From laughter-filled nights to inspiring moments — we’ve got your ticket.</p>
+      <div class="hero-ctas">
+        <a href="{% url 'events_list' %}" class="btn btn-primary">Browse Events</a>
+        <a href="{% url 'contact' %}" class="btn btn-ghost">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<!-- ABOUT SECTION -->
+<section class="about">
+  <div class="about-inner">
+    <h2>About Love & Laugh</h2>
+    <p>
+      Love & Laugh brings people together through curated events that blend joy, creativity, and community.
+      From comedy shows to music festivals — every event is a moment to celebrate life.
+    </p>
+  </div>
+</section>
+
+<!-- FEATURED EVENTS -->
+<section class="featured-events">
+  <h2 class="section-title">Featured Events</h2>
+  <div class="event-grid">
+    <div class="event-card">
+      <img src="{% static 'images/hero3.png' %}" alt="Event 1">
+      <div class="event-info">
+        <h3>Laughs Under the Stars</h3>
+        <p>A comedy night like no other — pure joy and energy.</p>
+      </div>
+    </div>
+    <div class="event-card">
+      <img src="{% static 'images/hero5.png' %}" alt="Event 2">
+      <div class="event-info">
+        <h3>Love Fest 2025</h3>
+        <p>Celebrate love, music, and art with us in one unforgettable day.</p>
+      </div>
+    </div>
+    <div class="event-card">
+      <img src="{% static 'images/hero6.png' %}" alt="Event 3">
+      <div class="event-info">
+        <h3>The Laugh Lounge</h3>
+        <p>An intimate evening with Kenya’s best stand-up comedians.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

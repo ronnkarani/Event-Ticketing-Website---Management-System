@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Events — Love & Laugh{% endblock %}
+
+{% block content %}
+<section class="page wrap">
+  <div class="page-head">
+    <h1>Events</h1>
+    <p class="muted">Find upcoming shows, workshops and live experiences.</p>
+  </div>
+
+  <div class="events-grid">
+    {% for event in events %}
+    <article class="event-card">
+      <a href="{% url 'event_detail' event.id %}" class="event-thumb" style="background-image:url('{{ event.image.url }}');"></a>
+      <div class="event-body">
+        <h3><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></h3>
+        <p class="muted">{{ event.venue }} • {{ event.start_date|date:"M d, Y" }}</p>
+        <p class="desc">{{ event.description|truncatewords:20 }}</p>
+        <div class="event-actions">
+          <a href="{% url 'event_detail' event.id %}" class="btn btn-sm">Details</a>
+          <a href="#" class="btn btn-sm btn-outline">Save</a>
+        </div>
+      </div>
+    </article>
+    {% empty %}
+    <p>No events found.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

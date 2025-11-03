@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{{ event.title }} — Love & Laugh{% endblock %}
+
+{% block content %}
+<section class="page wrap">
+  <div class="detail-grid">
+    <div class="media-col">
+      <div class="event-hero" style="background-image:url('{{ event.image.url }}');"></div>
+    </div>
+
+    <div class="info-col">
+      <h1 class="event-title">{{ event.title }}</h1>
+      <p class="muted">{{ event.venue }} • {{ event.start_date|date:"M d, Y" }}</p>
+      <p class="event-desc">{{ event.description }}</p>
+
+      <div class="meta">
+        <p><strong>Doors:</strong> {{ event.start_date|time:"P" }}</p>
+        <p><strong>Price:</strong> {% if event.price %}KSh {{ event.price }}{% else %}Varies{% endif %}</p>
+      </div>
+
+      <div class="actions">
+        <a href="#" class="btn btn-primary">Buy Ticket</a>
+        <a href="#" class="btn btn-ghost">Share</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

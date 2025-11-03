@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Contact — Love & Laugh{% endblock %}
+
+{% block content %}
+<section class="page wrap">
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h2>Contact Us</h2>
+      <p class="muted">Questions? Partnerships? Say hello.</p>
+
+      <form action="" method="post" class="contact-form">
+        {% csrf_token %}
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required>
+        </label>
+
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required>
+        </label>
+
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+
+    <aside class="contact-info">
+      <h4>Visit</h4>
+      <p class="muted">Love & Laugh HQ<br> Nairobi, Kenya</p>
+
+      <h4>Hours</h4>
+      <p class="muted">Mon — Fri: 9am — 6pm</p>
+
+      <h4>Email</h4>
+      <p><a href="mailto:hello@loveandlaugh.example">hello@loveandlaugh.example</a></p>
+    </aside>
+  </div>
+</section>
+{% endblock %}

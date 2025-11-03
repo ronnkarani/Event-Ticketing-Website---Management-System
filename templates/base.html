@@ -1,0 +1,100 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}Love & Laugh{% endblock %}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="theme-dark">
+  <header class="site-header">
+    <nav class="navbar" id="mainNav" role="navigation" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a class="brand" href="{% url 'home' %}">Love <span class="amp">&amp;</span> Laugh</a>
+
+        <!-- Hamburger (mobile) -->
+        <button id="hamburger" class="hamburger" aria-expanded="false" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <!-- Main links (visible on desktop). On small devices, JS moves them below header -->
+        <ul class="nav-links" id="navLinks">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+
+          <!-- Events with dropdown -->
+          <li class="has-dropdown">
+            <button class="drop-toggle" aria-haspopup="true" aria-expanded="false">Events</button>
+            <ul class="dropdown">
+              <li><a href="{% url 'events_list' %}">All Events</a></li>
+              <li><a href="{% url 'events_list' %}?type=comedy">Comedy</a></li>
+              <li><a href="{% url 'events_list' %}?type=workshop">Workshops</a></li>
+            </ul>
+          </li>
+
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+
+        <!-- Cart (always visible, not part of hamburger menu) -->
+        <a href="{% url 'cart' %}" class="cart-btn" aria-label="Cart">
+          <!-- simple cart SVG -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 3h2l.4 2M7 13h10l3-8H6.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="10" cy="20" r="1" fill="currentColor"/><circle cx="18" cy="20" r="1" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Mobile menu container (hidden on desktop). Items will be cloned here on small screens -->
+    <div id="mobileMenuContainer" class="mobile-menu-container" aria-hidden="true"></div>
+  </header>
+
+  <main id="mainContent">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer: two layered -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="wrap">
+        <div class="col">
+          <h4>Love & Laugh</h4>
+          <p>Bringing joy one laugh at a time — find experiences that make your heart light.</p>
+        </div>
+        <div class="col">
+          <h5>Explore</h5>
+          <ul>
+            <li><a href="{% url 'events_list' %}">Events</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col">
+          <h5>Subscribe</h5>
+          <form class="subscribe-form" action="#" method="post">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="you@example.com" required>
+            <button type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="wrap small">
+        <p>© {{ now|date:"Y" }} Love & Laugh — All rights reserved.</p>
+        <p class="muted">Made with ❤️ by Ronny  from SWFT LABS</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
